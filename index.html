@@ -1,0 +1,105 @@
+<style>
+    div { margin: 1em 0; }
+    textarea { height: 40%; width: 100%; }
+</style>
+
+<div>
+    <label>Instrument:</label>
+    <select id="instrument">
+        <option value="guitar">Guitar</option>
+        <option value="mandolin">Mandolin</option>
+    </select>
+    
+    <label>Position:</label>
+    <select id="position">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+</div>
+
+<div>
+    <label>Note/octave syntax:</label><br />
+    <textarea id="staff-notes">vextab&#13;&#10;tabstave notation=true&#13;&#10;notes :q C-D-E-F/4 | G-A-B/4 C/5</textarea>
+</div>
+
+<div>
+    <label>Fret/string syntax:</label><br />
+    <textarea id="tab-notes"></textarea>
+</div>
+
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="js/tc.js"></script>
+<script>
+    $(function () {
+        // ECMAScript 5 strict mode
+        'use strict';
+        
+        var $instrument = $('#instrument'),
+            $position = $('#position'),
+            $staffNotes = $('#staff-notes'),
+            $tabNotes = $('#tab-notes'),
+            dashRegExp = /-/,
+            chordRegExp = /^\(.*\..*\)$/,
+            noteRegExp = /^[ABCDEFG][@#]?\/[3456]$/;
+        
+        function update() {
+            $tabNotes.val('');
+            
+            $staffNotes.val().split('\n').forEach(function (line) {
+                line.split(' ').forEach(function (symbol) {
+                    var octavePart, octaveNotes, chordNotes;
+                    
+                    if (dashRegExp.test(symbol)) {
+                        octavePart = symbol.slice(-1),
+                        octaveNotes = [];
+                        
+                        symbol.slice(0, -2).split('-').forEach(function (notePart) {
+                            octaveNotes.push(tc.convert(notePart + '/' + octavePart, $instrument.val(), $position.val()));
+                        });
+                        
+                        $tabNotes.val($tabNotes.val() + octaveNotes.join(' ') + ' ');
+                        
+                        return;
+                    }
+                    
+                    if (chordRegExp.test(symbol)) {
+                        chordNotes = [];
+                        
+                        symbol.slice(1, -1).split('.').forEach(function (staffNote) {
+                            chordNotes.push(tc.convert(staffNote, $instrument.val(), $position.val()));
+                        });
+                        
+                        $tabNotes.val($tabNotes.val() + '(' + chordNotes.join('.') + ')' + ' ');
+                        
+                        return;
+                    }
+                    
+                    if (noteRegExp.test(symbol)) {
+                        $tabNotes.val($tabNotes.val() + tc.convert(symbol, $instrument.val(), $position.val()) + ' ');
+                        
+                        return;
+                    }
+                    
+                    $tabNotes.val($tabNotes.val() + symbol + ' ');
+                });
+                
+                $tabNotes.val($tabNotes.val() + '\n');
+            });
+        }
+        
+        update();
+        
+        $instrument.change(function () {
+            update();
+        });
+        
+        $position.change(function () {
+            update();
+        });
+        
+        $staffNotes.change(function () {
+            update();
+        });
+    });
+</script>

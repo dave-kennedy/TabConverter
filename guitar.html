@@ -1,0 +1,137 @@
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 0.5em;
+        text-align: center;
+        width: 10em;
+    }
+</style>
+
+<table>
+    <tr>
+        <th>0</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+        <th>11</th>
+        <th>12</th>
+    </tr>
+    <tr>
+        <td>E5</td>
+        <td>F5</td>
+        <td>F#5 / Gb5</td>
+        <td>G5</td>
+        <td>G#5 / Ab5</td>
+        <td>A5</td>
+        <td>A#5 / Bb5</td>
+        <td>B5</td>
+        <td>C6</td>
+        <td>C#6 / Db6</td>
+        <td>D6</td>
+        <td>D#6 / Eb6</td>
+        <td>E6</td>
+    </tr>
+    <tr>
+        <td>B4</td>
+        <td>C5</td>
+        <td>C#5 / Db5</td>
+        <td>D5</td>
+        <td>D#5 / Eb5</td>
+        <td>E5</td>
+        <td>F5</td>
+        <td>F#5 / Gb5</td>
+        <td>G5</td>
+        <td>G#5 / Ab5</td>
+        <td>A5</td>
+        <td>A#5 / Bb5</td>
+        <td>B5</td>
+    </tr>
+    <tr>
+        <td>G4</td>
+        <td>G#4 / Ab4</td>
+        <td>A4</td>
+        <td>A#4 / Bb4</td>
+        <td>B4</td>
+        <td>C5</td>
+        <td>C#5 / Db5</td>
+        <td>D5</td>
+        <td>D#5 / Eb5</td>
+        <td>E5</td>
+        <td>F5</td>
+        <td>F#5 / Gb5</td>
+        <td>G5</td>
+    </tr>
+    <tr>
+        <td>D4</td>
+        <td>D#4 / Eb4</td>
+        <td>E4</td>
+        <td>F4</td>
+        <td>F#4 / Gb4</td>
+        <td>G4</td>
+        <td>G#4 / Ab4</td>
+        <td>A4</td>
+        <td>A#4 / Bb4</td>
+        <td>B4</td>
+        <td>C5</td>
+        <td>C#5 / Db5</td>
+        <td>D5</td>
+    </tr>
+    <tr>
+        <td>A3</td>
+        <td>A#3 / Bb3</td>
+        <td>B3</td>
+        <td>C4</td>
+        <td>C#4 / Db4</td>
+        <td>D4</td>
+        <td>D#4 / Eb4</td>
+        <td>E4</td>
+        <td>F4</td>
+        <td>F#4 / Gb4</td>
+        <td>G4</td>
+        <td>G#4 / Ab4</td>
+        <td>A4</td>
+    </tr>
+    <tr>
+        <td>E3</td>
+        <td>F3</td>
+        <td>F#3 / Gb3</td>
+        <td>G3</td>
+        <td>G#3 / Ab3</td>
+        <td>A3</td>
+        <td>A#3 / Bb3</td>
+        <td>B3</td>
+        <td>C4</td>
+        <td>C#4 / Db4</td>
+        <td>D4</td>
+        <td>D#4 / Eb4</td>
+        <td>E4</td>
+    </tr>
+</table>
+
+<p>
+    Highlight frets: <input id="highlight-frets" type="text" />
+</p>
+
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script>
+    $(function () {
+        $('#highlight-frets').change(function() {
+            $('td').css({
+                'background-color': ''
+            });
+            $('td:contains(' + $(this).val() + ')').css({
+                'background-color': '#ffc'
+            });
+        });
+    });
+</script>

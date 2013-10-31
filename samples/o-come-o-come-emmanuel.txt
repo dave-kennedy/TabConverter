@@ -1,0 +1,16 @@
+vextab
+
+tabstave notation=true time=6/8 tuning=E/5,A/4,D/4,G/3
+notes :qd ## :q ## :8 A/4 | :8d A/4 E/5 E/5 E/5
+
+tabstave notation=true time=2/4 tuning=E/5,A/4,D/4,G/3
+notes :8 D/5 F/5 E/5 D/5
+
+tabstave notation=true time=6/8 tuning=E/5,A/4,D/4,G/3
+notes :qd (E/5.A/4) :16 B/4 C/5 B/4 ^3^ A/4 G/4 D/4 E/4 | :8d (E/5.A/4) :8 (E/5.A/4) :16 (E/5.A/4) :q (E/5.A/4) :8 D/5 | :8d E/5 C/5 :qd A/4
+
+tabstave notation=true time=2/4 tuning=E/5,A/4,D/4,G/3
+notes :8 D/5 B/4 :q A/4
+
+tabstave notation=true time=6/8 tuning=E/5,A/4,D/4,G/3
+notes :8 G/4 :q (E/5.A/4) :16 C/5 D/5 C/5 ^3^ B/4 D/5 E/5 G/5
