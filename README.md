@@ -1,3 +1,5 @@
+[Demo](http://dave-kennedy.github.io/TabConverter)
+
 This little library does one thing: it converts music written in [VexTab](http://vexflow.com) note/octave syntax into
 fret/string syntax. For example, entering this:
 
